@@ -70,7 +70,7 @@ function InfoCard(props) {
             user={props.user}
           />
         </div>
-        <CommentThread />
+        {/* <CommentThread /> */}
       </CardContent>
     </Card>
   );
