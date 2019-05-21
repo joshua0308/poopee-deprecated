@@ -20,11 +20,11 @@ const Map = props => (
         onClick={() => props.onMarkerClick(restroom)}
       />
     ))}
-    <Marker
+    {/* <Marker
       key={'userLocation'}
       position={props.userLatLng}
       icon={{ url: userIcon }}
-    />
+    /> */}
   </GoogleMap>
 );
 
