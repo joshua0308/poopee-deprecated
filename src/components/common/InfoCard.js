@@ -30,6 +30,9 @@ function InfoCard(props) {
     <Card
       className={classes.card}
       style={{
+        display: 'block',
+        margin: 'auto',
+        position: 'relative',
         height: '220px',
         overflow: 'auto',
         WebkitOverflowScrolling: 'touch'

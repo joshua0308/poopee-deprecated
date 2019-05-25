@@ -7,10 +7,12 @@
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "eslint": "^5.12.0",
     "keyboardjs": "^2.5.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.6",
     "react-confetti": "^2.7.3",
+    "react-device-detect": "^1.6.2",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
     "react-icons": "^3.5.0",
@@ -29,9 +31,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

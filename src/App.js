@@ -14,8 +14,8 @@ class App extends Component {
       <div>
         <Switch>
           <Route path='/swipe' component={Carousel} />
-          <Route path='/mobile' component={MobileView} />
-          <Route path='/' component={PageView} />
+          <Route path='/' component={MobileView} />
+          {/* <Route path='/' component={PageView} /> */}
         </Switch>
       </div>
     );
