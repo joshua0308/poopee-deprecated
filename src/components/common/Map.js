@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import selectedMarkerIcon from '../../assets/selectedMarker.png';
-import userIcon from '../../assets/userIconHuman.svg';
+import userIcon from '../../assets/currentlocation2.png';
 
 const {
   withScriptjs,
@@ -11,7 +11,8 @@ const {
 } = require('react-google-maps');
 
 const Map = props => (
-  <GoogleMap ref={map => props.onMapMounted(map)} {...props}>
+  // <GoogleMap ref={map => props.onMapMounted(map)} {...props}>
+  <GoogleMap ref={props.onMapMounted} {...props}>
     {props.restrooms.map(restroom => (
       <Marker
         key={restroom._id}
@@ -20,11 +21,13 @@ const Map = props => (
         onClick={() => props.onMarkerClick(restroom)}
       />
     ))}
-    {/* <Marker
-      key={'userLocation'}
-      position={props.userLatLng}
-      icon={{ url: userIcon }}
-    /> */}
+    {props.userLatLng.lat && (
+      <Marker
+        key={'userLocation'}
+        position={props.userLatLng}
+        icon={{ url: userIcon }}
+      />
+    )}
   </GoogleMap>
 );
 

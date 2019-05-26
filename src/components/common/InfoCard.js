@@ -10,6 +10,11 @@ import '../../App.css';
 import LikeButton from './LikeButton';
 import DislikeButton from './DislikeButton';
 import closeButton from '../../assets/closeButton.png';
+import redPin from '../../assets/redPin.png';
+import poopeeAvatar from '../../assets/poopeeAvatar.png';
+import joshAvatar from '../../assets/joshAvatar.png';
+import { Button, Comment, Form, Header } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 
 const styles = {
   card: {
@@ -49,22 +54,45 @@ function InfoCard(props) {
       />
       <img
         src={closeButton}
-        alt='Like Button'
+        alt='Close Button'
         style={{
           position: 'absolute',
           right: '10px',
           top: '10px',
-          width: '25px'
+          width: '25px',
+          cursor: 'pointer'
         }}
         onClick={props.onCloseButton}
       />
       <CardContent>
-        <Typography gutterBottom variant='h6' component='h1'>
+        {/* <div>{props.restroom.name}</div> */}
+        {/* <Typography gutterBottom variant='h6' component='h2'> */}
+        {/* <Typography component='p' style={{ fontSize: '12px' }}>
+        </Typography> */}
+        <Typography
+          variant='subtitle1'
+          style={{ margin: '0px', padding: '0px' }}
+        >
           <span style={{ fontWeight: 'bold' }}>{props.restroom.name}</span>
         </Typography>
-        <Typography component='p' style={{ fontSize: '12px' }}>
-          {props.restroom.direction}
-        </Typography>
+        {/* <img src={redPin} style={{ width: '15px' }} /> */}
+        {props.restroom.direction && (
+          <Comment.Group>
+            {/* <Header as='h3' dividing /> */}
+            <div style={{ height: '100%', overflowY: 'hidden' }}>
+              <Comment>
+                <Comment.Avatar src={joshAvatar} />
+                <Comment.Content>
+                  <Comment.Author as='a'>Josh</Comment.Author>
+                  <Comment.Metadata>
+                    <div>Pinned post by poopee</div>
+                  </Comment.Metadata>
+                  <Comment.Text>{props.restroom.direction}</Comment.Text>
+                </Comment.Content>
+              </Comment>
+            </div>
+          </Comment.Group>
+        )}
         {/* <div style={{ margin: '10px' }}>
           <LikeButton
             onClick={props.onLikeButtonClicked}

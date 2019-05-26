@@ -18,7 +18,8 @@ class MobileView extends Component {
     zoom: null,
     indexBefore: 0,
     index: 0,
-    userLatLng: { lat: 40.736362, lng: -73.998695 },
+    userLatLng: { lat: null, lng: null },
+    currentLatLng: { lat: 40.7308, lng: -73.997541 },
     isCardShown: false,
     rerender: null,
     panes: [],
@@ -40,27 +41,21 @@ class MobileView extends Component {
     }
   };
 
-  componentWillMount() {
-    // find user's location
+  async componentDidMount() {
+    // find the height of the user's window
+    let userLatLng;
     if (navigator.geolocation) {
+      console.log('Inside if statement');
       navigator.geolocation.getCurrentPosition(position => {
-        // set state
-        const latLng = {
+        console.log('Inside getCurrentPosition');
+        userLatLng = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-
-        this.setState({
-          userLatLng: latLng
-        });
-        console.log(latLng);
+        console.log('lat: ' + userLatLng.lat, 'lng: ' + userLatLng.lng);
+        this.setState({ userLatLng });
       });
     }
-  }
-
-  async componentDidMount() {
-    // find the height of the user's window
-
     // import restrooms from backend in mongodb
 
     try {
@@ -78,6 +73,10 @@ class MobileView extends Component {
       console.error(e);
     }
   }
+
+  handleFindMyLocation = () => {
+    this.setState({ currentLatLng: this.state.userLatLng });
+  };
 
   handleMapMounted = ref => {
     refs.map = ref;
@@ -100,9 +99,16 @@ class MobileView extends Component {
 
   handleZoomChanged = () => {
     let markerIcon =
-      refs.map.getZoom() > 13 ? zoomInMarkerIcon : zoomOutMarkerIcon;
+      refs.map.getZoom() > 14 ? zoomInMarkerIcon : zoomOutMarkerIcon;
     this.setState({ zoom: refs.map.getZoom() });
     this.setState({ markerIcon });
+  };
+
+  handleCenterChanged = () => {
+    let center = refs.map.getCenter();
+    let currentLatLng = { lat: center.lat(), lng: center.lng() };
+    this.setState({ currentLatLng });
+    // console.log(userLatLng);
   };
 
   createPanes = restrooms => {
@@ -138,16 +144,23 @@ class MobileView extends Component {
     return (
       <div>
         <div>
+          {/* <button
+            type='button'
+            onClick={this.handleFindMyLocation}
+            style={{ position: 'fixed', top: 0, zIndex: 1 }}
+          >
+            Find My Location
+          </button> */}
           <Map
             defaultOptions={{
               disableDefaultUI: true,
               gestureHandling: 'greedy',
               styles: mapStyles
             }}
-            defaultZoom={15}
-            defaultCenter={{
-              lng: this.state.userLatLng.lng,
-              lat: this.state.userLatLng.lat
+            defaultZoom={16}
+            center={{
+              lng: this.state.currentLatLng.lng,
+              lat: this.state.currentLatLng.lat
             }}
             googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyA1qg3OHSHEjNHsL6hg6A-1NX-5lsCFquw&v=3.exp&libraries=geometry,drawing,places'
             loadingElement={<div style={{ height: `100%` }} />}
@@ -159,6 +172,7 @@ class MobileView extends Component {
             restrooms={this.state.restrooms}
             markerIcon={this.state.markerIcon}
             onZoomChanged={this.handleZoomChanged}
+            onCenterChanged={this.handleCenterChanged}
             onMarkerClick={this.handleMarkerClick}
             userLatLng={this.state.userLatLng}
           />
