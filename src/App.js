@@ -16,7 +16,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    initializeReactGA();
+    this.initializeReactGA();
   }
 
   render() {
