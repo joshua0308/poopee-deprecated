@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import selectedMarkerIcon from '../../assets/selectedMarker.png';
-import userIcon from '../../assets/currentlocation2.png';
+import userIcon from '../../assets/roundpushpin.png';
 
 const {
   withScriptjs,

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import ReactSwipe from 'react-swipe';
 import Axios from 'axios';
 import Map from '../common/Map';
 import mapStyles from '../../assets/mapStyles.json';
 import zoomInMarkerIcon from '../../assets/zoomInMarker.png';
 import zoomOutMarkerIcon from '../../assets/zoomOutMarker.png';
 import InfoCard from '../common/InfoCard';
+import NavigationIcon from '@material-ui/icons/Navigation';
+import Fab from '@material-ui/core/Fab';
+
+// import ReactSwipe from 'react-swipe';
 
 var refs = {
   map: undefined
@@ -75,7 +78,13 @@ class MobileView extends Component {
   }
 
   handleFindMyLocation = () => {
-    this.setState({ currentLatLng: this.state.userLatLng });
+    if (this.state.userLatLng.lat == null) {
+      alert(
+        'Please give it a few seconds...\n\n*Make sure you enabled location service in your settings*'
+      );
+    } else {
+      this.setState({ currentLatLng: this.state.userLatLng });
+    }
   };
 
   handleMapMounted = ref => {
@@ -143,7 +152,7 @@ class MobileView extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className='mapDiv'>
           {/* <button
             type='button'
             onClick={this.handleFindMyLocation}
@@ -151,6 +160,7 @@ class MobileView extends Component {
           >
             Find My Location
           </button> */}
+
           <Map
             defaultOptions={{
               disableDefaultUI: true,
@@ -178,18 +188,36 @@ class MobileView extends Component {
           />
         </div>
 
-        {this.state.isCardShown && (
-          <div
+        <div className='buttonBoxDiv'>
+          <Fab
+            variant='extended'
+            aria-label='Delete'
             style={{
-              margin: '0 auto',
-              width: '100%',
               position: 'absolute',
-              bottom: '0px',
-              zIndex: 1
+              bottom: '1em',
+              right: '1em',
+              zIndex: 1,
+
+              backgroundColor: '#FFD600',
+              color: '#5D4037'
             }}
+            onClick={this.handleFindMyLocation}
           >
-            {this.state.panes[this.state.index]}
-            {/* <ReactSwipe
+            <NavigationIcon />
+            My Location
+          </Fab>
+          {this.state.isCardShown && (
+            <div
+              style={{
+                margin: '0 auto',
+                width: '100%',
+                position: 'absolute',
+                bottom: '0px',
+                zIndex: 1
+              }}
+            >
+              {this.state.panes[this.state.index]}
+              {/* <ReactSwipe
               ref={reactSwipe => (this.reactSwipe = reactSwipe)}
               className='mySwipe'
               swipeOptions={{
@@ -203,8 +231,9 @@ class MobileView extends Component {
             >
               {this.state.panes}
             </ReactSwipe> */}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
       </div>
     );
   }

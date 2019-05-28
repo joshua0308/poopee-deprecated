@@ -5,16 +5,16 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import CommentThread from './CommentThread';
 import '../../App.css';
-import LikeButton from './LikeButton';
-import DislikeButton from './DislikeButton';
 import closeButton from '../../assets/closeButton.png';
-import redPin from '../../assets/redPin.png';
-import poopeeAvatar from '../../assets/poopeeAvatar.png';
 import joshAvatar from '../../assets/joshAvatar.png';
 import { Button, Comment, Form, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+// import CommentThread from './CommentThread';
+// import LikeButton from './LikeButton';
+// import DislikeButton from './DislikeButton';
+// import redPin from '../../assets/redPin.png';
+// import poopeeAvatar from '../../assets/poopeeAvatar.png';
 
 const styles = {
   card: {
