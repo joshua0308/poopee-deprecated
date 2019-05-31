@@ -6,8 +6,9 @@ import zoomInMarkerIcon from '../../assets/zoomInMarker.png';
 import zoomOutMarkerIcon from '../../assets/zoomOutMarker.png';
 import InfoCard from '../common/InfoCard';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import SideBar from '../common/SideBar';
 import Fab from '@material-ui/core/Fab';
-
+import sideBarButton from '../../assets/sidenavbar.png';
 // import ReactSwipe from 'react-swipe';
 
 var refs = {
@@ -18,6 +19,8 @@ var refs = {
 
 class MobileView extends Component {
   state = {
+    // sideBarOpen: false,
+    sideBarWidth: '0px',
     zoom: null,
     indexBefore: 0,
     index: 0,
@@ -59,8 +62,8 @@ class MobileView extends Component {
         this.setState({ userLatLng });
       });
     }
-    // import restrooms from backend in mongodb
 
+    // import restrooms from backend in mongodb
     try {
       // get restroom data from backend
       const { data: restrooms } = await Axios.get(
@@ -87,6 +90,15 @@ class MobileView extends Component {
     }
   };
 
+  handleSideBar = status => {
+    if (status) {
+      this.setState({ sideBarWidth: '170px' });
+    } else {
+      this.setState({ sideBarWidth: '0px' });
+    }
+    console.log('sidebar button clicked');
+  };
+
   handleMapMounted = ref => {
     refs.map = ref;
   };
@@ -96,7 +108,6 @@ class MobileView extends Component {
     let restrooms = [...this.state.restrooms];
     let index = restrooms.indexOf(restroom);
     let indexBefore = this.state.index;
-    // let index = restroom.id;
 
     restrooms[indexBefore].selected = false;
     restrooms[index].selected = true;
@@ -150,17 +161,11 @@ class MobileView extends Component {
   };
 
   render() {
+    // var sideNavBarStyle = ;
+    // var sideBarStyle = ;
     return (
       <div>
         <div className='mapDiv'>
-          {/* <button
-            type='button'
-            onClick={this.handleFindMyLocation}
-            style={{ position: 'fixed', top: 0, zIndex: 1 }}
-          >
-            Find My Location
-          </button> */}
-
           <Map
             defaultOptions={{
               disableDefaultUI: true,
@@ -187,24 +192,48 @@ class MobileView extends Component {
             userLatLng={this.state.userLatLng}
           />
         </div>
-
-        <div className='buttonBoxDiv'>
+        <SideBar
+          className='sideNavBar'
+          sideBarWidth={this.state.sideBarWidth}
+          onSideBarClose={this.handleSideBar}
+        />
+        <div className='sideBarButton'>
           <Fab
             variant='extended'
             aria-label='Delete'
             style={{
               position: 'absolute',
-              bottom: '1em',
+              padding: 0,
+              top: '1em',
               right: '1em',
               zIndex: 1,
-
               backgroundColor: '#FFD600',
               color: '#5D4037'
+            }}
+            onClick={() => {
+              this.handleSideBar(true);
+            }}
+          >
+            <img src={sideBarButton} style={{ width: '48px' }} />
+          </Fab>
+        </div>
+        <div className='findMyLocationButton'>
+          <Fab
+            variant='extended'
+            aria-label='Delete'
+            style={{
+              position: 'absolute',
+              padding: 0,
+              top: '6em',
+              right: '1em',
+              zIndex: 1,
+              backgroundColor: '#FFD600',
+              color: '#5D4037',
+              transform: 'rotate(-45deg)'
             }}
             onClick={this.handleFindMyLocation}
           >
             <NavigationIcon />
-            My Location
           </Fab>
           {this.state.isCardShown && (
             <div

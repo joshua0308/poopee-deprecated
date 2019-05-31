@@ -7,11 +7,11 @@ import * as serviceWorker from './serviceWorker';
 import HttpsRedirect from 'react-https-redirect';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <HttpsRedirect>
+  <HttpsRedirect>
+    <BrowserRouter>
       <App />
-    </HttpsRedirect>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </HttpsRedirect>,
   document.getElementById('root')
 );
 
