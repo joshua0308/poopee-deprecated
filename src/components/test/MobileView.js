@@ -25,7 +25,7 @@ class MobileView extends Component {
     indexBefore: 0,
     index: 0,
     userLatLng: { lat: null, lng: null },
-    currentLatLng: { lat: 40.7308, lng: -73.997541 },
+    currentLatLng: { lat: 40.758966, lng: -73.985602 },
     isCardShown: false,
     rerender: null,
     panes: [],
