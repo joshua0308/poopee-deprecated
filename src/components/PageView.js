@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { dummyRestrooms } from '../dummy';
 import Map from './common/Map';
 import zoomInMarkerIcon from '../assets/zoomInMarker.png';
 import zoomOutMarkerIcon from '../assets/zoomOutMarker.png';
@@ -13,7 +14,6 @@ var refs = {
 
 class PageView extends Component {
   state = {
-    // collapse: true,
     mapHeight: window.innerHeight,
     isConfettiShown: false,
     isCardShown: false,
@@ -36,17 +36,16 @@ class PageView extends Component {
   };
 
   async componentDidMount() {
-    // get restrooms data
-    // get user data
-    const { data: restrooms } = await Axios.get(
-      'https://mysterious-earth-50755.herokuapp.com/api/restrooms'
-    );
+    // const { data: restrooms } = await Axios.get(
+    //   'https://mysterious-earth-50755.herokuapp.com/api/restrooms'
+    // );
+    const restrooms = dummyRestrooms;
     this.setState({ restrooms });
   }
 
-  handleMarkerClick = marker => {
+  handleMarkerClick = selectedRestroom => {
     let restrooms = [...this.state.restrooms];
-    let restroomsIndex = restrooms.indexOf(marker);
+    let restroomsIndex = restrooms.indexOf(selectedRestroom);
 
     // if card is hidden, show clicked card
     // change marker icon to selected
@@ -57,14 +56,14 @@ class PageView extends Component {
       }
       restrooms[restroomsIndex].selected = true;
       this.setState({ restrooms });
-      this.setState({ selectedMarker: marker.id });
+      this.setState({ selectedMarker: selectedRestroom.id });
       this.setState({ isCardShown: true });
       return;
     }
 
     // if card is shown and the user clicks on the same marker, hide card
     // change marker icon from selected to unselected
-    if (marker.id == this.state.selectedMarker) {
+    if (selectedRestroom.id == this.state.selectedMarker) {
       this.setState({ isCardShown: !this.state.isCardShown });
 
       restrooms[restroomsIndex].selected = false;
@@ -78,11 +77,11 @@ class PageView extends Component {
     for (let i = 0; i < restrooms.length; i++) {
       restrooms[i].selected = false;
     }
-    this.setState({ selectedMarker: marker.id });
+    this.setState({ selectedMarker: selectedRestroom.id });
     restrooms[restroomsIndex].selected = true;
     this.setState({ restrooms });
 
-    console.log(marker);
+    console.log(selectedRestroom);
   };
 
   // change the marker size when user zooms in or out
@@ -215,8 +214,9 @@ class PageView extends Component {
             }}
             onMapMounted={this.handleMapMounted}
             defaultZoom={13}
-            defaultCenter={{ lat: 40.736362, lng: -73.998695 }}
-            googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyA1qg3OHSHEjNHsL6hg6A-1NX-5lsCFquw&v=3.exp&libraries=geometry,drawing,places'
+            defaultCenter={{ lat: 45.5017,
+              lng: -73.5673 }}
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_KEY}&v=3.exp&libraries=geometry,drawing,places`}
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={
               <div style={{ height: `${this.state.mapHeight}px` }} />

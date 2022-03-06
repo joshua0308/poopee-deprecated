@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import Map from '../common/Map';
-import mapStyles from '../../assets/mapStyles.json';
-import zoomInMarkerIcon from '../../assets/zoomInMarker.png';
-import zoomOutMarkerIcon from '../../assets/zoomOutMarker.png';
-import InfoCard from '../common/InfoCard';
+import Map from './common/Map';
+import mapStyles from '../assets/mapStyles.json';
+import zoomInMarkerIcon from '../assets/zoomInMarker.png';
+import zoomOutMarkerIcon from '../assets/zoomOutMarker.png';
+import InfoCard from './common/InfoCard';
 import NavigationIcon from '@material-ui/icons/Navigation';
-import SideBar from '../common/SideBar';
+import SideBar from './common/SideBar';
 import Fab from '@material-ui/core/Fab';
-import sideBarButton from '../../assets/sidenavbar.png';
-// import ReactSwipe from 'react-swipe';
+import sideBarButton from '../assets/sidenavbar.png';
+import { dummyRestrooms } from '../dummy';
 
 var refs = {
   map: undefined
 };
 
-// const mapHeight = window.innerHeight;
-
 class MobileView extends Component {
   state = {
-    // sideBarOpen: false,
     sideBarWidth: '0px',
     zoom: null,
     indexBefore: 0,
@@ -66,9 +63,10 @@ class MobileView extends Component {
     // import restrooms from backend in mongodb
     try {
       // get restroom data from backend
-      const { data: restrooms } = await Axios.get(
-        'https://mysterious-earth-50755.herokuapp.com/api/restrooms'
-      );
+      // const { data: restrooms } = await Axios.get(
+      //   'https://mysterious-earth-50755.herokuapp.com/api/restrooms'
+      // );
+      const restrooms = dummyRestrooms;
       this.setState({ restrooms });
 
       // create panes with restroom data
@@ -103,10 +101,10 @@ class MobileView extends Component {
     refs.map = ref;
   };
 
-  handleMarkerClick = restroom => {
-    console.log(restroom);
+  handleMarkerClick = selectedRestroom => {
+    console.log(selectedRestroom);
     let restrooms = [...this.state.restrooms];
-    let index = restrooms.indexOf(restroom);
+    let index = restrooms.indexOf(selectedRestroom);
     let indexBefore = this.state.index;
 
     restrooms[indexBefore].selected = false;
@@ -128,7 +126,6 @@ class MobileView extends Component {
     let center = refs.map.getCenter();
     let currentLatLng = { lat: center.lat(), lng: center.lng() };
     this.setState({ currentLatLng });
-    // console.log(userLatLng);
   };
 
   createPanes = restrooms => {
@@ -160,9 +157,10 @@ class MobileView extends Component {
     return panes;
   };
 
+
   render() {
-    // var sideNavBarStyle = ;
-    // var sideBarStyle = ;
+    console.log('debug: ', process.env.REACT_APP_GOOGLE_MAP_KEY)
+
     return (
       <div>
         <div className='mapDiv'>
@@ -177,7 +175,7 @@ class MobileView extends Component {
               lng: this.state.currentLatLng.lng,
               lat: this.state.currentLatLng.lat
             }}
-            googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyA1qg3OHSHEjNHsL6hg6A-1NX-5lsCFquw&v=3.exp&libraries=geometry,drawing,places'
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_KEY}&v=3.exp&libraries=geometry,drawing,places`}
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={
               <div style={{ height: `${this.state.mapHeight}px` }} />
@@ -246,20 +244,6 @@ class MobileView extends Component {
               }}
             >
               {this.state.panes[this.state.index]}
-              {/* <ReactSwipe
-              ref={reactSwipe => (this.reactSwipe = reactSwipe)}
-              className='mySwipe'
-              swipeOptions={{
-                startSlide: this.state.index,
-                disableScroll: false,
-                continuous: true,
-                widthOfSiblingSlidePreview: 10
-                // transitionEnd: (index, element) =>
-                //   this.showSelectedMarker(index)
-              }}
-            >
-              {this.state.panes}
-            </ReactSwipe> */}
             </div>
           )}
         </div>

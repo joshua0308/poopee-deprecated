@@ -18,97 +18,6 @@ const CommentThread = () => (
           <Comment.Text>Just what I needed!</Comment.Text>
         </Comment.Content>
       </Comment>
-
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
-      <Comment>
-        <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-        <Comment.Content>
-          <Comment.Author as='a'>Jenny</Comment.Author>
-          <Comment.Metadata>
-            <div>Today at 5:42PM</div>
-          </Comment.Metadata>
-          <Comment.Text>This bathroom is so clean!</Comment.Text>
-        </Comment.Content>
-      </Comment>
       <Comment>
         <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
         <Comment.Content>
@@ -120,11 +29,6 @@ const CommentThread = () => (
         </Comment.Content>
       </Comment>
     </div>
-    {/* 
-    <Form reply>
-      <Form.TextArea style={{ height: '100px' }} />
-      <Button content='Add Reply' labelPosition='left' icon='edit' primary />
-    </Form> */}
   </Comment.Group>
 );
 

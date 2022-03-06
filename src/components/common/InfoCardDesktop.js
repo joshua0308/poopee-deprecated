@@ -23,6 +23,7 @@ const styles = {
 
 function InfoCard(props) {
   const { classes } = props;
+  console.log('debug: props.restroom', props.restroom)
   return (
     <Card
       className={classes.card}

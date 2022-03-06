@@ -10,9 +10,9 @@ import closeButton from '../../assets/closeButton.png';
 import joshAvatar from '../../assets/joshAvatar.png';
 import { Button, Comment, Form, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-// import CommentThread from './CommentThread';
-// import LikeButton from './LikeButton';
-// import DislikeButton from './DislikeButton';
+import CommentThread from './CommentThread';
+import LikeButton from './LikeButton';
+import DislikeButton from './DislikeButton';
 // import redPin from '../../assets/redPin.png';
 // import poopeeAvatar from '../../assets/poopeeAvatar.png';
 
@@ -38,7 +38,7 @@ function InfoCard(props) {
         display: 'block',
         margin: 'auto',
         position: 'relative',
-        height: '220px',
+        height: '300px',
         overflow: 'auto',
         WebkitOverflowScrolling: 'touch'
       }}
@@ -93,7 +93,7 @@ function InfoCard(props) {
             </div>
           </Comment.Group>
         )}
-        {/* <div style={{ margin: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <LikeButton
             onClick={props.onLikeButtonClicked}
             marker={props.restroom}
@@ -104,8 +104,8 @@ function InfoCard(props) {
             marker={props.restroom}
             user={props.user}
           />
-        </div> */}
-        {/* <CommentThread /> */}
+        </div>
+        <CommentThread />
       </CardContent>
     </Card>
   );

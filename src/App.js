@@ -3,9 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import PageView from './components/PageView';
 import './App.css';
-// test components below
-import Carousel from './components/test/Carousel';
-import MobileView from './components/test/MobileView';
+import MobileView from './components/MobileView';
 
 class App extends Component {
   state = {};
@@ -23,7 +21,6 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route path='/swipe' component={Carousel} />
           <Route path='/' component={MobileView} />
           {/* <Route path='/' component={PageView} /> */}
         </Switch>
