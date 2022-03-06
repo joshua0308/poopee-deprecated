@@ -1,4 +1,9 @@
-## *This project is deprecated*
+# *This project is deprecated*
+
+## Poopee
+|Zoom out|Zoom in|Card|Reviews|
+|-|-|-|-|
+|<img width="374" alt="Screen Shot 2022-03-05 at 9 31 50 PM" src="https://user-images.githubusercontent.com/8519876/156906837-52fd11e9-6b25-4955-a6b4-5e734f913139.png">|<img width="373" alt="Screen Shot 2022-03-05 at 9 33 34 PM" src="https://user-images.githubusercontent.com/8519876/156906722-47de53a8-39f2-41db-ae96-e600f32c06e3.png">|<img width="373" alt="Screen Shot 2022-03-05 at 9 31 09 PM" src="https://user-images.githubusercontent.com/8519876/156906721-eda5b5a9-ec13-43ff-92a4-bc94cf454713.png">|<img width="371" alt="Screen Shot 2022-03-05 at 9 39 43 PM" src="https://user-images.githubusercontent.com/8519876/156906878-86663735-eed8-4329-a9a0-803e66a2d16a.png">|
 
 ## How to start
 ### Create a .env file in the root directory
