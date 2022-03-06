@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../App.css';
 import dislike from '../../assets/dislike.png';
 import Fab from '@material-ui/core/Fab';
 import PropTypes from 'prop-types';

@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CommentThread from './CommentThread';
-import '../../App.css';
 import LikeButton from './LikeButton';
 import DislikeButton from './DislikeButton';
 import closeButton from '../../assets/closeButton.png';
@@ -23,7 +22,6 @@ const styles = {
 
 function InfoCard(props) {
   const { classes } = props;
-  console.log('debug: props.restroom', props.restroom)
   return (
     <Card
       className={classes.card}

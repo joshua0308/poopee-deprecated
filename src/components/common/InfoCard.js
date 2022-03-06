@@ -5,7 +5,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import '../../App.css';
 import closeButton from '../../assets/closeButton.png';
 import joshAvatar from '../../assets/joshAvatar.png';
 import { Button, Comment, Form, Header } from 'semantic-ui-react';

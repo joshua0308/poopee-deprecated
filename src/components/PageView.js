@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { dummyRestrooms } from '../dummy';
+import { dummyRestrooms } from '../fixtures';
 import Map from './common/Map';
 import zoomInMarkerIcon from '../assets/zoomInMarker.png';
 import zoomOutMarkerIcon from '../assets/zoomOutMarker.png';

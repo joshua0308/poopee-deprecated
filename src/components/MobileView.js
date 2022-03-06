@@ -9,7 +9,7 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 import SideBar from './common/SideBar';
 import Fab from '@material-ui/core/Fab';
 import sideBarButton from '../assets/sidenavbar.png';
-import { dummyRestrooms } from '../dummy';
+import { dummyRestrooms } from '../fixtures';
 
 var refs = {
   map: undefined
@@ -159,8 +159,6 @@ class MobileView extends Component {
 
 
   render() {
-    console.log('debug: ', process.env.REACT_APP_GOOGLE_MAP_KEY)
-
     return (
       <div>
         <div className='mapDiv'>

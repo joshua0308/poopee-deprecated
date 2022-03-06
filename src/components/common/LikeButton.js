@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import '../../App.css';
+import React from 'react';
 import like from '../../assets/like.png';
 import Fab from '@material-ui/core/Fab';
 import PropTypes from 'prop-types';
